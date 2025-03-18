@@ -18,6 +18,9 @@
 		41CE10682D88A93700ADC2B1 /* TasksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10672D88A93700ADC2B1 /* TasksUITestsLaunchTests.swift */; };
 		41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10752D88ADE500ADC2B1 /* ContentView.swift */; };
 		41CE10782D88AF1A00ADC2B1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 41CE10772D88AF1A00ADC2B1 /* README.md */; };
+		41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107A2D88B41300ADC2B1 /* Task.swift */; };
+		41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107D2D88B4B200ADC2B1 /* APIManager.swift */; };
+		41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		41CE10672D88A93700ADC2B1 /* TasksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		41CE10752D88ADE500ADC2B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		41CE10772D88AF1A00ADC2B1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		41CE107A2D88B41300ADC2B1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		41CE107D2D88B4B200ADC2B1 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,8 @@
 		41CE10432D88A93400ADC2B1 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				41CE107C2D88B49D00ADC2B1 /* API */,
+				41CE10792D88B3FC00ADC2B1 /* Model */,
 				41CE10742D88ADC400ADC2B1 /* SwiftUI */,
 				41CE10442D88A93400ADC2B1 /* AppDelegate.swift */,
 				41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */,
@@ -139,6 +147,23 @@
 				41CE10752D88ADE500ADC2B1 /* ContentView.swift */,
 			);
 			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		41CE10792D88B3FC00ADC2B1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				41CE107A2D88B41300ADC2B1 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		41CE107C2D88B49D00ADC2B1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				41CE107D2D88B4B200ADC2B1 /* APIManager.swift */,
+				41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,10 +298,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */,
 				41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */,
 				41CE10452D88A93400ADC2B1 /* AppDelegate.swift in Sources */,
+				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,
 				41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */,
 				41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */,
+				41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
