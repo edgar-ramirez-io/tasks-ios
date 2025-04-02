@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E92162D9DEAD500FBF11E /* TasksViewController.swift */; };
 		41CE10452D88A93400ADC2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10442D88A93400ADC2B1 /* AppDelegate.swift */; };
 		41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */; };
 		41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10482D88A93400ADC2B1 /* ViewController.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		418E92162D9DEAD500FBF11E /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		41CE10412D88A93400ADC2B1 /* Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE10442D88A93400ADC2B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				41CE10442D88A93400ADC2B1 /* AppDelegate.swift */,
 				41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */,
 				41CE10482D88A93400ADC2B1 /* ViewController.swift */,
+				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
 				41CE104A2D88A93400ADC2B1 /* Main.storyboard */,
 				41CE104D2D88A93600ADC2B1 /* Assets.xcassets */,
 				41CE104F2D88A93600ADC2B1 /* LaunchScreen.storyboard */,
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */,
+				418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */,
 				41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */,
 				41CE10452D88A93400ADC2B1 /* AppDelegate.swift in Sources */,
 				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,

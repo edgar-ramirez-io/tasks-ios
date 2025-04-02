@@ -12,6 +12,9 @@ class APIManager {
     
     private init() {}
     
+    // FIXME: Make it a mock service
+    // https://livefront.com/writing/creating-a-service-layer-in-swift/
+    
     func request<T: Codable>(endpoint: String, method: String, parameters: [String: Any]?, completion: @escaping(Result<T, Error>) -> Void) {
         guard let url = URL(string: endpoint) else {
             completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
