@@ -9,8 +9,8 @@
  [
      {
          "id": "96fd7b25-071b-4496-84a3-8ffe3e156ab2",
-         "title": "",
-         "description": "",
+         "title": "My task",
+         "description": "Study Swift!!!",
          "status": "OPEN"
      }
  ]

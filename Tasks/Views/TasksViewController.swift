@@ -16,7 +16,7 @@ fileprivate let cellId = "cellId"
 
 class TasksViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
-    private let tasksViewModel = TasksViewModel()
+    private let tasksViewModel = TasksViewControllerViewModel()
     
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
@@ -72,34 +72,8 @@ extension TasksViewController: UITableViewDataSource, UITableViewDelegate {
         content.secondaryText = task?.description ?? "N/A"
         content.secondaryTextProperties.color = .systemGray
         
-        // FIXME: handle better white-spaces
-        content.text = content.text == "" ? "N/A" : content.text
-        content.secondaryText = content.secondaryText == "" ? "N/A" : content.text
-        
         cell.contentConfiguration = content
         
         return cell
-    }
-}
-
-class TasksViewModel: ObservableObject {
-    @Published var tasks: [Task]?
-    
-    init() {
-        getTasks()
-    }
-    
-    func getTasks() {
-        let endpoint = "http://localhost:3000/tasks/"
-        
-        APIManager.shared.request(endpoint: endpoint, method: "GET", parameters: nil) { [weak self] (result: Result<[Task], Error>) in
-            switch result {
-            case .success(let tasks):
-                self?.tasks = tasks
-                print(tasks)
-            case .failure(let error):
-                print("Error fetching data: \(error.localizedDescription)")
-            }
-        }
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Edgar Ramirez on 3/17/25.
 //
 
+import Combine
 import Foundation
 
 class APIManager {
@@ -54,6 +55,33 @@ class APIManager {
                 }
             }
         }.resume()
+    }
+    
+    func request<T: Codable>(endpoint: String, method: String, parameters: [String: Any]?) -> AnyPublisher<T, Error> {
+        guard let url = URL(string: endpoint) else {
+            return Fail(error: NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"]))
+                .eraseToAnyPublisher()
+        }
+        guard let accessToken = TokenManager.shared.accessToken else {
+            return Fail(error: NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "No accessToken available"]))
+                .eraseToAnyPublisher()
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(accessToken)", forHTTPHeaderField: "Authorization")
+        
+        return URLSession.shared.dataTaskPublisher(for: request)
+            .tryMap { data, response in
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {    // FIXME: Support retryRequest when 401
+                    throw NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Authorizatied Access"])
+                }
+                return data
+            }
+            .decode(type: T.self, decoder: JSONDecoder())
+            .mapError { $0 as Error }
+            .eraseToAnyPublisher()
     }
     
     private func retryRequest<T: Codable>(endpoint: String, method: String, parameters: [String: Any]?, token: String, completion: @escaping(Result<T, Error>) -> Void) {

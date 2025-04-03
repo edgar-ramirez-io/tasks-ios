@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E92162D9DEAD500FBF11E /* TasksViewController.swift */; };
+		418E921C2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */; };
+		418E921E2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */; };
+		418E92212D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E92202D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift */; };
+		418E92232D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E92222D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift */; };
+		418E92262D9EECB100FBF11E /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 418E92252D9EECB100FBF11E /* users.json */; };
 		41CE10452D88A93400ADC2B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10442D88A93400ADC2B1 /* AppDelegate.swift */; };
 		41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */; };
 		41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE10482D88A93400ADC2B1 /* ViewController.swift */; };
@@ -43,6 +48,12 @@
 
 /* Begin PBXFileReference section */
 		418E92162D9DEAD500FBF11E /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewControllerViewModel.swift; sourceTree = "<group>"; };
+		418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModelTests.swift; sourceTree = "<group>"; };
+		418E92202D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewControllerViewModelService.swift; sourceTree = "<group>"; };
+		418E92222D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModelServiceProtocol.swift; sourceTree = "<group>"; };
+		418E92252D9EECB100FBF11E /* users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		418E92272D9EF47E00FBF11E /* Tasks.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Tasks.xctestplan; sourceTree = "<group>"; };
 		41CE10412D88A93400ADC2B1 /* Tasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41CE10442D88A93400ADC2B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,9 +99,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		418E92192D9EDD6D00FBF11E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				41CE10482D88A93400ADC2B1 /* ViewController.swift */,
+				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
+				418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */,
+				418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		418E921F2D9EE28900FBF11E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				418E92202D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift */,
+				418E92222D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		418E92242D9EEC9900FBF11E /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				418E92252D9EECB100FBF11E /* users.json */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
 		41CE10382D88A93400ADC2B1 = {
 			isa = PBXGroup;
 			children = (
+				418E92272D9EF47E00FBF11E /* Tasks.xctestplan */,
 				41CE10772D88AF1A00ADC2B1 /* README.md */,
 				41CE10432D88A93400ADC2B1 /* Tasks */,
 				41CE105A2D88A93700ADC2B1 /* TasksTests */,
@@ -112,13 +152,13 @@
 		41CE10432D88A93400ADC2B1 /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
+				418E921F2D9EE28900FBF11E /* Services */,
+				418E92192D9EDD6D00FBF11E /* Views */,
 				41CE107C2D88B49D00ADC2B1 /* API */,
 				41CE10792D88B3FC00ADC2B1 /* Model */,
 				41CE10742D88ADC400ADC2B1 /* SwiftUI */,
 				41CE10442D88A93400ADC2B1 /* AppDelegate.swift */,
 				41CE10462D88A93400ADC2B1 /* SceneDelegate.swift */,
-				41CE10482D88A93400ADC2B1 /* ViewController.swift */,
-				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
 				41CE104A2D88A93400ADC2B1 /* Main.storyboard */,
 				41CE104D2D88A93600ADC2B1 /* Assets.xcassets */,
 				41CE104F2D88A93600ADC2B1 /* LaunchScreen.storyboard */,
@@ -131,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				41CE105B2D88A93700ADC2B1 /* TasksTests.swift */,
+				418E92242D9EEC9900FBF11E /* Fixtures */,
 			);
 			path = TasksTests;
 			sourceTree = "<group>";
@@ -284,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418E92262D9EECB100FBF11E /* users.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,10 +347,13 @@
 				418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */,
 				41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */,
 				41CE10452D88A93400ADC2B1 /* AppDelegate.swift in Sources */,
+				418E92212D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift in Sources */,
 				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,
+				418E92232D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift in Sources */,
 				41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */,
 				41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */,
 				41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */,
+				418E921C2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				418E921E2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift in Sources */,
 				41CE105C2D88A93700ADC2B1 /* TasksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
