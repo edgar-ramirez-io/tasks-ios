@@ -12,13 +12,13 @@ import XCTest
 final class LoginViewControllerViewModelTests: XCTestCase {
     
     var mockService: LoginViewControllerViewModelServiceProtocol!
-//    var subject: TasksViewControllerViewModel!
+    var subject: LoginViewModel!
 
     override func setUp() {
         super.setUp()
         
         mockService = MockLoginViewControllerViewModelService()
-//        subject = TasksViewControllerViewModel(service: mockService)
+        subject = LoginViewModel()
     }
 
     func testExample() throws {

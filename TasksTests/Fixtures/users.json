@@ -1,3 +1,4 @@
 {
-    "accessToken": "test"
+    "userName": "username",
+    "status": "Authenticated"
 }

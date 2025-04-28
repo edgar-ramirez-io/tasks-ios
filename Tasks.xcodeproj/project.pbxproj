@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		41504A6A2DBF31FA0028294F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41504A692DBF31FA0028294F /* LoginViewController.swift */; };
+		41504A6C2DBF33430028294F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41504A6B2DBF33430028294F /* LoginViewModel.swift */; };
+		41504A6E2DBF34360028294F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41504A6D2DBF34360028294F /* LoginResponse.swift */; };
+		41504A702DBF39C40028294F /* LoginViewControllerViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41504A6F2DBF39C40028294F /* LoginViewControllerViewModelService.swift */; };
 		418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E92162D9DEAD500FBF11E /* TasksViewController.swift */; };
 		418E921C2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */; };
 		418E921E2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */; };
@@ -47,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		41504A692DBF31FA0028294F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		41504A6B2DBF33430028294F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		41504A6D2DBF34360028294F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		41504A6F2DBF39C40028294F /* LoginViewControllerViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModelService.swift; sourceTree = "<group>"; };
 		418E92162D9DEAD500FBF11E /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewControllerViewModel.swift; sourceTree = "<group>"; };
 		418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModelTests.swift; sourceTree = "<group>"; };
@@ -99,6 +107,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		41504A682DBF31DA0028294F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				41504A692DBF31FA0028294F /* LoginViewController.swift */,
+				41504A6B2DBF33430028294F /* LoginViewModel.swift */,
+				41504A6D2DBF34360028294F /* LoginResponse.swift */,
+				41504A6F2DBF39C40028294F /* LoginViewControllerViewModelService.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		418E92192D9EDD6D00FBF11E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +125,7 @@
 				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
 				418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */,
 				418E921D2D9EDF5D00FBF11E /* LoginViewControllerViewModelTests.swift */,
+				41504A682DBF31DA0028294F /* Login */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,6 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41504A6E2DBF34360028294F /* LoginResponse.swift in Sources */,
+				41504A6A2DBF31FA0028294F /* LoginViewController.swift in Sources */,
 				41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */,
 				418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */,
 				41CE10492D88A93400ADC2B1 /* ViewController.swift in Sources */,
@@ -350,9 +372,11 @@
 				418E92212D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift in Sources */,
 				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,
 				418E92232D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift in Sources */,
+				41504A6C2DBF33430028294F /* LoginViewModel.swift in Sources */,
 				41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */,
 				41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */,
 				41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */,
+				41504A702DBF39C40028294F /* LoginViewControllerViewModelService.swift in Sources */,
 				418E921C2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -23,20 +23,12 @@ class ViewController: UIViewController {
         
         let button = UIButton(
             configuration: configuration,
-            primaryAction: UIAction { [weak self] _ in
-                print("authenticating....")
-                guard let weakSelf = self else { return }
-                // FIXME: Remove it and implement Login
-                weakSelf.retrieveAccessToken("", "") { result in
-                    switch result {
-                    case .success(_):
-                        print("authenticated")
-                        DispatchQueue.main.async { [weak self] in
-                            guard let weakSelf = self else { return }
-                            weakSelf.navigationController?.pushViewController(TasksViewController(), animated: true)
-                        }
-                    case .failure(_):
-                        print("Not authenticated")
+            primaryAction: UIAction { _ in
+                DispatchQueue.main.async {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewControllerIdentifier") as? UIViewController else { fatalError("LoginViewControllerIdentifier does not exist.") }
+                    if let currentVC = UIApplication.shared.keyWindow?.rootViewController {
+                        currentVC.present(loginVC, animated: true)
                     }
                 }
             }
@@ -63,39 +55,12 @@ class ViewController: UIViewController {
 
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
-}
-
-extension ViewController {
-    private func retrieveAccessToken(_ username: String, _ password: String, completion: @escaping((Result<Void  , Error>)) -> Void) {
-        guard let url = URL(string: "http://localhost:3000/auth/signin") else {
-            completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
-            return
+    
+    // TODO: Use it with Delegate protocol
+    private func navigateAuthenticatedUsersToMain() {
+        if let accessToken = TokenManager.shared.accessToken,
+           !accessToken.isEmpty {
+            self.navigationController?.pushViewController(TasksViewController(), animated: true)
         }
-               
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = ["username": "", "password": ""]
-        
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: body)
-        } catch {
-            completion(.failure(error))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                do {
-                    let tokenResponse = try JSONDecoder().decode(TokenResponse.self, from: data)
-                    TokenManager.shared.updateTokens(accessToken: tokenResponse.accessToken, refreshToken: tokenResponse.refreshToken)
-                    completion(.success(()))
-                } catch {
-                    completion(.failure(error))
-                }
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }.resume()
     }
 }
