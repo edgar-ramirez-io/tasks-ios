@@ -17,7 +17,8 @@ fileprivate let cellId = "cellId"
 class TasksViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private let tasksViewModel = TasksViewControllerViewModel()
-    
+    weak var dismissDelegate: LoginViewControllerDismissDelegate?
+
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
@@ -30,17 +31,10 @@ class TasksViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        navigationItem.hidesBackButton = true
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.view.addSubview(tableView)
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-        ])
+        setupLogoutButton()
+        setupTableView()
         
         // Subscription to ObservableObject
         tasksViewModel.objectWillChange
@@ -55,6 +49,29 @@ class TasksViewController: UIViewController {
     // A controller action will receive the retrieved data by the ViewModel
     private func updateTasksListUI() {
         self.tableView.reloadData()
+    }
+    
+    private func setupLogoutButton() {
+        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(tapLogout))
+        navigationItem.rightBarButtonItem = logoutButton
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+        ])
+    }
+    
+    @objc private func tapLogout() {
+        self.dismissDelegate?.dismissOtherViewControllerAndLogout?()
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

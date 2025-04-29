@@ -13,9 +13,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
 
     private let loginViewModel = LoginViewModel()
-    
+    weak var dismissDelegate: LoginViewControllerDismissDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .systemBackground
     }
     
     @IBAction func submit() {
@@ -37,13 +40,9 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async { [weak self] in
                 switch result {
                 case .success():
-                    let alert = UIAlertController(title: "Welcome", message: "Welcome back \(self?.loginViewModel.userName ?? "N/A") status: \(self?.loginViewModel.status ?? "N/A")", preferredStyle: .alert)
-                    let okAlert = UIAlertAction(title: "OK", style: .cancel) { [weak self] _ in
-                        self?.dismiss(animated: true)
-                    }
-                    
-                    alert.addAction(okAlert)
-                    self?.present(alert, animated: true)
+                    self?.dismiss(animated: true, completion: { [weak self] in
+                        self?.dismissDelegate?.dismissLoginViewController?()
+                    })
                 case .failure(let error):
                     let alert = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .alert)
                     let cancelAlert = UIAlertAction(title: "OK", style: .cancel)

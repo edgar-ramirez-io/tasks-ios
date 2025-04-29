@@ -8,6 +8,9 @@
 import Foundation
 
 final class LoginViewControllerViewModelService: LoginViewControllerViewModelServiceProtocol {
+    func logout(completion: @escaping (Result<LoginResponse, Error>) -> Void) {
+        fatalError("Method not implemented")
+    }
     
     func retrieveAccessToken(_ username: String, _ password: String, completion: @escaping ((Result<LoginResponse, Error>)) -> Void) {
         guard let url = URL(string: "http://127.0.0.1:8000/djangoapp/login") else {
@@ -49,7 +52,4 @@ final class LoginViewControllerViewModelService: LoginViewControllerViewModelSer
             }
         }.resume()
     }
-    
-    
-    
 }

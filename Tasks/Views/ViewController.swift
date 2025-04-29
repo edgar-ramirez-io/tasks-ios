@@ -15,33 +15,20 @@ class ViewController: UIViewController {
         title = "Login to Tasks"
         view.backgroundColor = .systemBackground
         
-        var configuration = UIButton.Configuration.gray()
-        configuration.cornerStyle = .fixed
-        configuration.background.cornerRadius = 8
-        configuration.baseForegroundColor = UIColor.black
-        configuration.title = "Login"
+        let label = UILabel(frame: .zero)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Logging in..."
+        label.textAlignment = .center
         
-        let button = UIButton(
-            configuration: configuration,
-            primaryAction: UIAction { _ in
-                DispatchQueue.main.async {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewControllerIdentifier") as? UIViewController else { fatalError("LoginViewControllerIdentifier does not exist.") }
-                    if let currentVC = UIApplication.shared.keyWindow?.rootViewController {
-                        currentVC.present(loginVC, animated: true)
-                    }
-                }
-            }
-        )
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.view.addSubview(button)
+        self.view.addSubview(label)
         
         NSLayoutConstraint.activate([
-            button.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
-            button.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor)
+            label.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+            label.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor)
         ])
+        
+        self.navigateAuthenticatedUsersToMainOrLogin()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,11 +43,37 @@ class ViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = false
     }
     
-    // TODO: Use it with Delegate protocol
-    private func navigateAuthenticatedUsersToMain() {
+    private func navigateAuthenticatedUsersToMainOrLogin() {
         if let accessToken = TokenManager.shared.accessToken,
            !accessToken.isEmpty {
-            self.navigationController?.pushViewController(TasksViewController(), animated: true)
+            let mainVC = TasksViewController()
+            mainVC.dismissDelegate = self
+            self.navigationController?.pushViewController(mainVC, animated: true)
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewControllerIdentifier") as? LoginViewController else { fatalError("LoginViewControllerIdentifier does not exist.") }
+                loginVC.dismissDelegate = self
+                loginVC.modalPresentationStyle = .fullScreen
+                
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }),
+                   let currentVC = keyWindow.rootViewController {
+                    currentVC.present(loginVC, animated: true)
+                }
+            }
         }
+    }
+}
+
+extension ViewController: LoginViewControllerDismissDelegate {
+    func dismissLoginViewController() {
+        self.navigateAuthenticatedUsersToMainOrLogin()
+    }
+    
+    func dismissOtherViewControllerAndLogout() {
+        // TODO: GET http://127.0.0.1:8000/djangoapp/logout
+        TokenManager.shared.clearTokens()
+        self.navigateAuthenticatedUsersToMainOrLogin()
     }
 }
