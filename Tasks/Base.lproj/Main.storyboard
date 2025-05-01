@@ -93,8 +93,93 @@
             </objects>
             <point key="canvasLocation" x="1016" y="8"/>
         </scene>
+        <!--Dealers-->
+        <scene sceneID="gbl-pp-881">
+            <objects>
+                <tableViewController storyboardIdentifier="DealersTableViewControllerIdentifier" id="Bt0-MB-NCI" customClass="DealersTableViewController" customModule="Tasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JiL-7P-e6n">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cellId" rowHeight="80" id="HK7-yd-uVw" customClass="DealerTableViewCell" customModule="Tasks" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HK7-yd-uVw" id="bn2-rv-YII">
+                                    <rect key="frame" x="0.0" y="0.0" width="362.66666666666669" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="oiv-pa-E1E">
+                                            <rect key="frame" x="20" y="11" width="334.66666666666669" height="58"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qs-RL-g2d">
+                                                    <rect key="frame" x="0.0" y="0.0" width="334.66666666666669" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btm-Cl-Bca">
+                                                    <rect key="frame" x="0.0" y="41" width="334.66666666666669" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oiv-pa-E1E" firstAttribute="leading" secondItem="bn2-rv-YII" secondAttribute="leadingMargin" id="7i9-5k-BCE"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oiv-pa-E1E" secondAttribute="bottom" id="IYU-pO-JBY"/>
+                                        <constraint firstItem="oiv-pa-E1E" firstAttribute="top" secondItem="bn2-rv-YII" secondAttribute="topMargin" id="QLk-gh-iSU"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="oiv-pa-E1E" secondAttribute="trailing" id="g69-aE-Iz0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descriptionLabel" destination="Btm-Cl-Bca" id="dw1-ES-Rty"/>
+                                    <outlet property="titleLabel" destination="6qs-RL-g2d" id="UD0-bp-cN4"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Bt0-MB-NCI" id="XOq-Z8-F2r"/>
+                            <outlet property="delegate" destination="Bt0-MB-NCI" id="8gY-NC-vkA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Dealers" id="FRF-lA-KaU">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="q16-Z1-c1T">
+                            <connections>
+                                <action selector="logout" destination="Bt0-MB-NCI" id="NAo-CI-5Qx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqS-Be-a9O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2377.8625954198474" y="-669.0140845070423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OmZ-3a-NTg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eQA-B2-4gR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rEd-BX-fd7">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bt0-MB-NCI" kind="relationship" relationship="rootViewController" id="7ml-fc-c3J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uq2-6d-2J6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1451.1450381679388" y="-669.0140845070423"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

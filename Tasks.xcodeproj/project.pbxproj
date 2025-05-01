@@ -32,6 +32,11 @@
 		41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107A2D88B41300ADC2B1 /* Task.swift */; };
 		41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107D2D88B4B200ADC2B1 /* APIManager.swift */; };
 		41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */; };
+		41D5333A2DC2AE1B00CDA8DA /* get_dealers.json in Resources */ = {isa = PBXBuildFile; fileRef = 41D533392DC2AE1B00CDA8DA /* get_dealers.json */; };
+		41D5333D2DC2AE9000CDA8DA /* DealersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5333C2DC2AE9000CDA8DA /* DealersListViewModel.swift */; };
+		41D5333F2DC2C7EF00CDA8DA /* DealersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5333E2DC2C7EF00CDA8DA /* DealersTableViewController.swift */; };
+		41D533412DC2C8FD00CDA8DA /* DealersListViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533402DC2C8FD00CDA8DA /* DealersListViewModelService.swift */; };
+		41D533432DC40E7C00CDA8DA /* DealerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533422DC40E7C00CDA8DA /* DealerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +87,11 @@
 		41CE107A2D88B41300ADC2B1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		41CE107D2D88B4B200ADC2B1 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		41D533392DC2AE1B00CDA8DA /* get_dealers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = get_dealers.json; sourceTree = "<group>"; };
+		41D5333C2DC2AE9000CDA8DA /* DealersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersListViewModel.swift; sourceTree = "<group>"; };
+		41D5333E2DC2C7EF00CDA8DA /* DealersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersTableViewController.swift; sourceTree = "<group>"; };
+		41D533402DC2C8FD00CDA8DA /* DealersListViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersListViewModelService.swift; sourceTree = "<group>"; };
+		41D533422DC40E7C00CDA8DA /* DealerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +134,7 @@
 		418E92192D9EDD6D00FBF11E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41D5333B2DC2AE4700CDA8DA /* DealersList */,
 				41CE10482D88A93400ADC2B1 /* ViewController.swift */,
 				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
 				418E921B2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift */,
@@ -146,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				418E92252D9EECB100FBF11E /* users.json */,
+				41D533392DC2AE1B00CDA8DA /* get_dealers.json */,
 			);
 			path = Fixtures;
 			sourceTree = "<group>";
@@ -231,6 +243,17 @@
 				41CE107F2D88C2A500ADC2B1 /* TokenManager.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		41D5333B2DC2AE4700CDA8DA /* DealersList */ = {
+			isa = PBXGroup;
+			children = (
+				41D5333C2DC2AE9000CDA8DA /* DealersListViewModel.swift */,
+				41D533402DC2C8FD00CDA8DA /* DealersListViewModelService.swift */,
+				41D5333E2DC2C7EF00CDA8DA /* DealersTableViewController.swift */,
+				41D533422DC40E7C00CDA8DA /* DealerTableViewCell.swift */,
+			);
+			path = DealersList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				418E92262D9EECB100FBF11E /* users.json in Resources */,
+				41D5333A2DC2AE1B00CDA8DA /* get_dealers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,9 +401,13 @@
 				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,
 				418E92232D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift in Sources */,
 				41504A6C2DBF33430028294F /* LoginViewModel.swift in Sources */,
+				41D533412DC2C8FD00CDA8DA /* DealersListViewModelService.swift in Sources */,
 				41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */,
+				41D5333F2DC2C7EF00CDA8DA /* DealersTableViewController.swift in Sources */,
 				41CE10472D88A93400ADC2B1 /* SceneDelegate.swift in Sources */,
 				41CE10802D88C2A500ADC2B1 /* TokenManager.swift in Sources */,
+				41D533432DC40E7C00CDA8DA /* DealerTableViewCell.swift in Sources */,
+				41D5333D2DC2AE9000CDA8DA /* DealersListViewModel.swift in Sources */,
 				41504A702DBF39C40028294F /* LoginViewControllerViewModelService.swift in Sources */,
 				418E921C2D9EDE3D00FBF11E /* TasksViewControllerViewModel.swift in Sources */,
 			);

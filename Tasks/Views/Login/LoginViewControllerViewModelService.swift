@@ -13,7 +13,7 @@ final class LoginViewControllerViewModelService: LoginViewControllerViewModelSer
     }
     
     func retrieveAccessToken(_ username: String, _ password: String, completion: @escaping ((Result<LoginResponse, Error>)) -> Void) {
-        guard let url = URL(string: "http://127.0.0.1:8000/djangoapp/login") else {
+        guard let url = URL(string: "http://localhost:8000/djangoapp/login") else {
             completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid URL"])))
             return
         }

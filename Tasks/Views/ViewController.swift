@@ -44,15 +44,17 @@ class ViewController: UIViewController {
     }
     
     private func navigateAuthenticatedUsersToMainOrLogin() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let accessToken = TokenManager.shared.accessToken,
            !accessToken.isEmpty {
-            let mainVC = TasksViewController()
+            guard let mainVC = storyboard.instantiateViewController(withIdentifier: "DealersTableViewControllerIdentifier") as? DealersTableViewController else {
+                fatalError("DealersTableViewController cannot be instantiated from Main.storyboard")
+            }
             mainVC.dismissDelegate = self
             self.navigationController?.pushViewController(mainVC, animated: true)
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewControllerIdentifier") as? LoginViewController else { fatalError("LoginViewControllerIdentifier does not exist.") }
+                guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewControllerIdentifier") as? LoginViewController else { fatalError("LoginViewControllerIdentifier cannot be instantiated from Main.storyboard") }
                 loginVC.dismissDelegate = self
                 loginVC.modalPresentationStyle = .fullScreen
                 
