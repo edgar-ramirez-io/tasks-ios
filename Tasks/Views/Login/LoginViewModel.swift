@@ -9,9 +9,8 @@ import Foundation
 import UIKit
 
 class LoginViewModel {    
-    var userName: String?
     var statusEnum: LoginUserStatus?
-    
+
     private let service: LoginViewControllerViewModelServiceProtocol
     
     init(service: LoginViewControllerViewModelServiceProtocol = LoginViewControllerViewModelService()) {
@@ -28,7 +27,6 @@ extension LoginViewModel {
         service.retrieveAccessToken(username, password) { result in
             switch result {
             case .success(let data):
-                self.userName = data.userName
                 self.statusEnum = data.status
                 completion(.success(()))
             case .failure(let error):

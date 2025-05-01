@@ -11,7 +11,14 @@ class TokenManager {
     static let shared = TokenManager()
     
     var refreshToken: String?
-    var accessToken: String?
+    var accessToken: String? { // TODO: Store real accessToken
+        get {
+            return UserDefaults.standard.value(forKey: "userName") as? String
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "userName")
+        }
+    }
     
     private init() {}
     
