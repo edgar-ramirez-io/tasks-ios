@@ -37,6 +37,12 @@
 		41D5333F2DC2C7EF00CDA8DA /* DealersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5333E2DC2C7EF00CDA8DA /* DealersTableViewController.swift */; };
 		41D533412DC2C8FD00CDA8DA /* DealersListViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533402DC2C8FD00CDA8DA /* DealersListViewModelService.swift */; };
 		41D533432DC40E7C00CDA8DA /* DealerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533422DC40E7C00CDA8DA /* DealerTableViewCell.swift */; };
+		41D533482DC54BDE00CDA8DA /* DealerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533472DC54BDE00CDA8DA /* DealerDetailsViewController.swift */; };
+		41D5334A2DC55B6900CDA8DA /* DealerDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533492DC55B6900CDA8DA /* DealerDetailsViewModel.swift */; };
+		41D5334C2DC55BBB00CDA8DA /* DealerDetailsViewModelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5334B2DC55BBB00CDA8DA /* DealerDetailsViewModelService.swift */; };
+		41D5334E2DC55FA200CDA8DA /* DealerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D5334D2DC55FA200CDA8DA /* DealerReview.swift */; };
+		41D533502DC7FA7C00CDA8DA /* DealerDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 41D5334F2DC7FA7C00CDA8DA /* DealerDetailsTableViewCell.xib */; };
+		41D533522DC7FC5700CDA8DA /* DealerDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41D533512DC7FC5700CDA8DA /* DealerDetailsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +98,12 @@
 		41D5333E2DC2C7EF00CDA8DA /* DealersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersTableViewController.swift; sourceTree = "<group>"; };
 		41D533402DC2C8FD00CDA8DA /* DealersListViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersListViewModelService.swift; sourceTree = "<group>"; };
 		41D533422DC40E7C00CDA8DA /* DealerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerTableViewCell.swift; sourceTree = "<group>"; };
+		41D533472DC54BDE00CDA8DA /* DealerDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewController.swift; sourceTree = "<group>"; };
+		41D533492DC55B6900CDA8DA /* DealerDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewModel.swift; sourceTree = "<group>"; };
+		41D5334B2DC55BBB00CDA8DA /* DealerDetailsViewModelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsViewModelService.swift; sourceTree = "<group>"; };
+		41D5334D2DC55FA200CDA8DA /* DealerReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerReview.swift; sourceTree = "<group>"; };
+		41D5334F2DC7FA7C00CDA8DA /* DealerDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DealerDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		41D533512DC7FC5700CDA8DA /* DealerDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +146,7 @@
 		418E92192D9EDD6D00FBF11E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				41D533462DC54BBE00CDA8DA /* DealerDetails */,
 				41D5333B2DC2AE4700CDA8DA /* DealersList */,
 				41CE10482D88A93400ADC2B1 /* ViewController.swift */,
 				418E92162D9DEAD500FBF11E /* TasksViewController.swift */,
@@ -256,6 +269,19 @@
 			path = DealersList;
 			sourceTree = "<group>";
 		};
+		41D533462DC54BBE00CDA8DA /* DealerDetails */ = {
+			isa = PBXGroup;
+			children = (
+				41D533472DC54BDE00CDA8DA /* DealerDetailsViewController.swift */,
+				41D533492DC55B6900CDA8DA /* DealerDetailsViewModel.swift */,
+				41D5334D2DC55FA200CDA8DA /* DealerReview.swift */,
+				41D5334B2DC55BBB00CDA8DA /* DealerDetailsViewModelService.swift */,
+				41D5334F2DC7FA7C00CDA8DA /* DealerDetailsTableViewCell.xib */,
+				41D533512DC7FC5700CDA8DA /* DealerDetailsTableViewCell.swift */,
+			);
+			path = DealerDetails;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -363,6 +389,7 @@
 				41CE10512D88A93600ADC2B1 /* LaunchScreen.storyboard in Resources */,
 				41CE104E2D88A93600ADC2B1 /* Assets.xcassets in Resources */,
 				41CE10782D88AF1A00ADC2B1 /* README.md in Resources */,
+				41D533502DC7FA7C00CDA8DA /* DealerDetailsTableViewCell.xib in Resources */,
 				41CE104C2D88A93400ADC2B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,8 +417,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41D5334A2DC55B6900CDA8DA /* DealerDetailsViewModel.swift in Sources */,
+				41D533522DC7FC5700CDA8DA /* DealerDetailsTableViewCell.swift in Sources */,
 				41504A6E2DBF34360028294F /* LoginResponse.swift in Sources */,
 				41504A6A2DBF31FA0028294F /* LoginViewController.swift in Sources */,
+				41D533482DC54BDE00CDA8DA /* DealerDetailsViewController.swift in Sources */,
 				41CE107E2D88B4B200ADC2B1 /* APIManager.swift in Sources */,
 				418E92172D9DEAD500FBF11E /* TasksViewController.swift in Sources */,
 				41365E8C2DC07A3700B98FC0 /* LoginViewControllerDismissDelegate.swift in Sources */,
@@ -400,7 +430,9 @@
 				418E92212D9EE2BA00FBF11E /* TasksViewControllerViewModelService.swift in Sources */,
 				41CE107B2D88B41300ADC2B1 /* Task.swift in Sources */,
 				418E92232D9EE66000FBF11E /* LoginViewControllerViewModelServiceProtocol.swift in Sources */,
+				41D5334E2DC55FA200CDA8DA /* DealerReview.swift in Sources */,
 				41504A6C2DBF33430028294F /* LoginViewModel.swift in Sources */,
+				41D5334C2DC55BBB00CDA8DA /* DealerDetailsViewModelService.swift in Sources */,
 				41D533412DC2C8FD00CDA8DA /* DealersListViewModelService.swift in Sources */,
 				41CE10762D88ADE500ADC2B1 /* ContentView.swift in Sources */,
 				41D5333F2DC2C7EF00CDA8DA /* DealersTableViewController.swift in Sources */,

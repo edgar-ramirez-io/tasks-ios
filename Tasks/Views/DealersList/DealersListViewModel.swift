@@ -44,34 +44,37 @@ class DealersListViewModel: ObservableObject {
 extension DealersListViewModel {
     
     func dealerViewModel(at index: Int) -> Dealer? {
-        return self.response?.dealers?[index]
+        guard let dealers = self.response?.dealers, index < dealers.count else {
+            return nil
+        }
+        return dealers[index]
     }
 }
 
 struct DealerViewModel {
-    let dealer: Dealer
+    let dealer: Dealer?
 }
 
 extension DealerViewModel {
-    var dealerName: String {
-        return self.dealer.dealerName
+    var dealerName: String? {
+        return self.dealer?.dealerName
     }
     
-    var city: String {
-        return self.dealer.city
+    var city: String? {
+        return self.dealer?.city
     }
 }
 
 struct Dealer: Codable {
-    let id: Int
-    let dealerName: String
-    let city: String
-    let address: String
-    let zip: String
-    let state: String
-    let lat: String
-    let long: String
-    let shortName: String
+    let id: Int?
+    let dealerName: String?
+    let city: String?
+    let address: String?
+    let zip: String?
+    let state: String?
+    let lat: String?
+    let long: String?
+    let shortName: String?
     
     private enum CodingKeys: String, CodingKey {
         case id

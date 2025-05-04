@@ -35,6 +35,14 @@ extension DealersTableViewController {
         self.dismissDelegate?.dismissOtherViewControllerAndLogout?()
         self.navigationController?.popViewController(animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetailSegue",
+           let vc = segue.destination as? DealerDetailsViewController,
+           let indexPath = sender as? IndexPath {
+            vc.selectedDealer = self.dealersListViewModel.dealerViewModel(at: indexPath.row)
+        }
+    }
 }
 
 extension DealersTableViewController {
@@ -61,5 +69,7 @@ extension DealersTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.performSegue(withIdentifier: "showDetailSegue", sender: indexPath)
     }
 }
