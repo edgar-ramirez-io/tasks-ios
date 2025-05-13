@@ -13,6 +13,10 @@ class DealersTableViewController: UITableViewController {
     private var cancellables: Set<AnyCancellable> = []
     private let dealersListViewModel = DealersListViewModel()
     weak var dismissDelegate: LoginViewControllerDismissDelegate?
+
+    var filteredDealers: [Dealer] = []
+    var isSearching = false
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +28,7 @@ class DealersTableViewController: UITableViewController {
             .receive(on: RunLoop.main)
             .sink(
                 receiveValue: { [weak self] in
+                    self?.filteredDealers = []
                     self?.tableView.reloadData()
                 })
             .store(in: &cancellables)
@@ -51,14 +56,18 @@ extension DealersTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dealersListViewModel.response?.dealers?.count ?? 0
+        return self.isSearching
+        ? self.filteredDealers.count
+        : self.dealersListViewModel.response?.dealers?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? DealerTableViewCell else {
             fatalError("DealerTableViewCell cannot be created")
         }
-        let vm = self.dealersListViewModel.dealerViewModel(at: indexPath.row)
+        let vm = self.isSearching
+        ? self.filteredDealers[indexPath.row]
+            : self.dealersListViewModel.dealerViewModel(at: indexPath.row)
         
         cell.titleLabel?.text = vm?.dealerName ?? "N/A"
         let fullAddress = "\(vm?.address ?? "N/A")\n\(vm?.city ?? "N/A"), \(vm?.state ?? "N/A")\n\(vm?.zip ?? "N/A")"
@@ -71,5 +80,22 @@ extension DealersTableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         self.performSegue(withIdentifier: "showDetailSegue", sender: indexPath)
+    }
+}
+
+extension DealersTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            self.isSearching = false
+        } else {
+            self.isSearching = true
+            self.filteredDealers = self.dealersListViewModel.response?.dealers?.filter({ $0.dealerName?.contains(searchText) ?? false }) ?? []
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.isSearching = false
+        self.filteredDealers = []
     }
 }
