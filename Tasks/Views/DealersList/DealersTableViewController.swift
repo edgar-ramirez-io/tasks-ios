@@ -24,13 +24,22 @@ class DealersTableViewController: UITableViewController {
         view.backgroundColor = .systemBackground
         navigationItem.hidesBackButton = true
         
-        dealersListViewModel.objectWillChange
-            .receive(on: RunLoop.main)
-            .sink(
-                receiveValue: { [weak self] in
+        dealersListViewModel.$response
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
                     self?.filteredDealers = []
                     self?.tableView.reloadData()
-                })
+            }
+            .store(in: &cancellables)
+        
+        dealersListViewModel.$errorMessage
+            .compactMap { $0 }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorMessage in
+                let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .cancel))
+                self?.present(alert, animated: true)
+            }
             .store(in: &cancellables)
     }
 }
@@ -58,16 +67,12 @@ extension DealersTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.isSearching
         ? self.filteredDealers.count
-        : self.dealersListViewModel.response?.dealers?.count ?? 0
+        : self.dealersListViewModel.dealersViewModel()?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? DealerTableViewCell else {
-            fatalError("DealerTableViewCell cannot be created")
-        }
-        let vm = self.isSearching
-        ? self.filteredDealers[indexPath.row]
-            : self.dealersListViewModel.dealerViewModel(at: indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DealerTableViewCell
+        let vm = self.isSearching ? self.filteredDealers[indexPath.row] : self.dealersListViewModel.dealerViewModel(at: indexPath.row)
         
         cell.titleLabel?.text = vm?.dealerName ?? "N/A"
         let fullAddress = "\(vm?.address ?? "N/A")\n\(vm?.city ?? "N/A"), \(vm?.state ?? "N/A")\n\(vm?.zip ?? "N/A")"
@@ -89,7 +94,7 @@ extension DealersTableViewController: UISearchBarDelegate {
             self.isSearching = false
         } else {
             self.isSearching = true
-            self.filteredDealers = self.dealersListViewModel.response?.dealers?.filter({ $0.dealerName?.contains(searchText) ?? false }) ?? []
+            self.filteredDealers = self.dealersListViewModel.dealersViewModel()?.filter({ $0.dealerName?.contains(searchText) ?? false }) ?? []
         }
         self.tableView.reloadData()
     }
@@ -97,5 +102,6 @@ extension DealersTableViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.isSearching = false
         self.filteredDealers = []
+        self.tableView.reloadData()
     }
 }

@@ -30,10 +30,7 @@ class DealerDetailsViewController: UITableViewController {
             
             return
         }
-        
-        print("DealersTableViewController: \(dealer.dealerName ?? "N/A") dealerId: \(dealer.id ?? -1)")
-        
-        self.viewModel = DealerDetailsViewModel(dealserId: dealerId)
+        self.viewModel = DealerDetailsViewModel(dealerId: dealerId)
         
         self.viewModel?.objectWillChange
             .receive(on: RunLoop.main)
@@ -83,9 +80,7 @@ extension DealerDetailsViewController {
             
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as? DealerDetailsTableViewCell else {
-                fatalError("DealerDetailsTableViewCell.xib cannot be reused.")
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath) as! DealerDetailsTableViewCell
             
             if self.viewModel?.numberOfDealerReviews() ?? 0 == 0 {
                 cell.titleLabel?.text = "No reviews yet"

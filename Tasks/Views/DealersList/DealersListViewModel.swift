@@ -17,10 +17,12 @@ struct GetDealersResponse: Codable {
 class DealersListViewModel: ObservableObject {
     var cancellables: Set<AnyCancellable> = []
     @Published var response: GetDealersResponse?
+    @Published var errorMessage: String?
     private let service: DealersListViewModelServiceProtocol
     
     init(service: DealersListViewModelServiceProtocol = DealersListViewModelService()) {
         self.service = service
+        self.errorMessage = nil
         getDealers()
     }
     
@@ -28,15 +30,18 @@ class DealersListViewModel: ObservableObject {
         self.service.getDealers()
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { completion in
+                receiveCompletion: { [weak self] completion in
                     switch completion {
                     case .finished:
                         print("Publisher completed successfully.")
                     case .failure(let error):
-                        print("Publisher error: \(error)")
+                        self?.errorMessage = error.localizedDescription
                     }
                 },
-                receiveValue: { self.response = $0 })
+                receiveValue: { [weak self] in
+                    self?.response = $0
+                    self?.errorMessage = nil
+                })
             .store(in: &cancellables)
     }
 }
@@ -48,6 +53,10 @@ extension DealersListViewModel {
             return nil
         }
         return dealers[index]
+    }
+    
+    func dealersViewModel() -> [Dealer]? {
+        return self.response?.dealers
     }
 }
 

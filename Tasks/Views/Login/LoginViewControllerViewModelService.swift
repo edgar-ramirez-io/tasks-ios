@@ -38,7 +38,7 @@ final class LoginViewControllerViewModelService: LoginViewControllerViewModelSer
             if let data = data {
                 do {
                     let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
-                    guard let status = loginResponse.status else {
+                    guard let status = loginResponse.status, status == .Authenticated else {
                         completion(.failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Not authorized"])))
                         return
                     }

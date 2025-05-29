@@ -20,14 +20,14 @@ class DealerDetailsViewModel: ObservableObject {
     
     init(
         service: DealerDetailsViewModelServiceProtocol = DealerDetailsViewService(),
-        dealserId: Int) {
+        dealerId: Int) {
         self.service = service
-        getDelearDetails(dealserId)
+        getDelearDetails(dealerId)
     }
     
     func getDelearDetails(_ dealerId: Int) {
         self.service
-            .getDealerDetails(delearId: dealerId)
+            .getDealerDetails(dealerId: dealerId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
